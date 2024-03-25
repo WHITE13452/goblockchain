@@ -1,2 +1,2 @@
 # goblockchain
-A blockchain learning project
+A project for learning golang and blockchain
