@@ -32,7 +32,7 @@ func (bc *BlockChain) VerifyTransactions(txs []*transaction.Transaction) bool {
 			if !ok {
 				return false
 			}
-			inputAmount = amount
+			inputAmount += amount
 			spentOutputs[hex.EncodeToString(input.TxID)] = input.OutIdx
 		}
 

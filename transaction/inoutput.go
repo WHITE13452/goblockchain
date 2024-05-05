@@ -30,11 +30,11 @@ type UTXO struct {
 	TxOutput
 }
 
-func (in *TxInput)FromAddressRight(address []byte) bool {
+func (in *TxInput) FromAddressRight(address []byte) bool {
 	return bytes.Equal(in.PubKey, address)
 }
 
-func (out *TxOutput)ToAddressRight(address []byte) bool {
+func (out *TxOutput) ToAddressRight(address []byte) bool {
 	return bytes.Equal(out.HashPubKey, utils.PublicKeyHash(address))
 }
 

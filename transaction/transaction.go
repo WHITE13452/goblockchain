@@ -28,7 +28,7 @@ func (tx *Transaction)	TxHash()	[]byte {
 	return hash[:]
 }
 
-func (tx *Transaction)SetID()  {
+func (tx *Transaction) SetID()  {
 	tx.ID = tx.TxHash()
 }
 
@@ -45,7 +45,7 @@ func (tx *Transaction) IsBase() bool {
 }
 
 //交易过程  https://zhuanlan.zhihu.com/p/435733874
-//只是单纯的复制了一下
+//只是单纯的复制一下交易的信息，拿到这笔交易的input和output
 func (tx *Transaction) PlainCopy() Transaction {
 	var inputs []TxInput
 	var outputs []TxOutput

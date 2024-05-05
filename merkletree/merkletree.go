@@ -12,7 +12,7 @@ import (
 
 type MerkleTreeNode struct {
 	leftNode 	*MerkleTreeNode
-	reightNode 	*MerkleTreeNode
+	rightNode 	*MerkleTreeNode
 	Data		[]byte //hash
 }
 
@@ -33,7 +33,7 @@ func CreateMerkleNode(left, right *MerkleTreeNode, data []byte) *MerkleTreeNode 
 	}
 
 	tempNode.leftNode = left
-	tempNode.reightNode = right
+	tempNode.rightNode = right
 
 	return &tempNode
 }
@@ -83,15 +83,15 @@ func (mn *MerkleTreeNode) Find(data []byte, route []int, hashroute [][]byte) (bo
 	} else {
 		if mn.leftNode != nil {
 			route_t := append(route, 0)
-			hashroute_t := append(hashroute, mn.reightNode.Data)
+			hashroute_t := append(hashroute, mn.rightNode.Data)
 			findFlag, route_t, hashroute_t = mn.leftNode.Find(data, route_t, hashroute_t)
 			if findFlag {
 				return findFlag, route_t, hashroute_t
 			} else {
-				if mn.reightNode != nil {
+				if mn.rightNode != nil {
 					route_t = append(route, 1)
 					hashroute_t = append(hashroute, mn.leftNode.Data)
-					findFlag, route_t, hashroute_t = mn.reightNode.Find(data, route_t, hashroute_t)
+					findFlag, route_t, hashroute_t = mn.rightNode.Find(data, route_t, hashroute_t)
 					if findFlag {
 						return findFlag, route_t, hashroute_t
 					} else {

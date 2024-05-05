@@ -105,6 +105,7 @@ func VerifySign(content string, signature string, publicKeyStr string) bool {
 	e = rr.UnmarshalText([]byte(rStr))
 	e = ss.UnmarshalText([]byte(sStr))
 	pubKey, e := BuildPublicKey(publicKeyStr)
+	
 	if e != nil {
 		return false
 	}
